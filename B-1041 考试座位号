@@ -1,0 +1,28 @@
+#include <iostream>
+#include<cstdio>
+using namespace std;
+const int Maxn = 1001;
+struct student //注意typedef struct 和struct xxxx
+{
+    long long id;
+    int examseat;
+}testseat[Maxn];
+int main()
+{
+    int N,seat,examseat;
+    long long id;
+    scanf("%d",&N);
+    for(int i=0;i<N;i++)
+    {
+        scanf("%lld %d %d",&id,&seat,&examseat);
+        testseat[seat].id=id;
+        testseat[seat].examseat=examseat;
+    }
+    int M;
+    scanf("%d",&M);
+    for(int i=0;i<M;i++)
+    {
+        scanf("%d",&seat);
+        printf("%lld %d\n",testseat[seat].id,testseat[seat].examseat);
+    }
+}
