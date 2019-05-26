@@ -1,0 +1,57 @@
+#include <iostream>
+#include<cstdio>
+//using namespace std;
+const int Max=10001;
+struct people
+{
+    char name[10];
+    int y;
+    int m;
+    int d;
+}temp,yo,old,left,right;
+
+bool LessEque(people a,people b)//如果a<b,返回true
+{
+    if(a.y!=b.y) return a.y<b.y;
+    if(a.m!=b.m) return a.m<b.m;
+    if(a.d!=b.d) return a.d<b.d;
+}
+
+bool MoreEque(people a,people b)//如果a>b,返回true
+{
+    if(a.y!=b.y) return a.y>b.y;
+    if(a.m!=b.m) return a.m>b.m;
+    if(a.d!=b.d) return a.d>b.d;
+}
+
+void init()
+{
+    yo.y  = left.y  = 1814;
+    old.y = right.y = 2014;
+    yo.m  = old.m = left.m = right.m = 9;
+    yo.d  = old.d = left.d = right.d = 6;
+}
+
+int main()
+{
+    init();
+    int n,count=0;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s %d/%d/%d",&temp.name,&temp.y,&temp.m,&temp.d);
+        if(LessEque(temp,right)&&MoreEque(temp,left))
+        {
+            count++;
+            if(LessEque(temp,old))
+                old=temp;
+            if(MoreEque(temp,yo))
+                yo=temp;
+        }
+    }
+    if(count==0)
+        printf("0\n");
+    else
+        printf("%d %s %s\n",count,old.name,yo.name);
+    return 0;
+}
