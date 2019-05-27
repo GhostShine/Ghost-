@@ -1,0 +1,47 @@
+#include <iostream>
+#include<cstdio>
+
+struct person
+{
+    char id[20];
+    int in_hh,in_mm,in_ss;
+    int out_hh,out_mm,out_ss;
+}temp,earlist,lastest;
+
+void init()
+{
+    earlist.in_hh=24;
+    earlist.in_mm=lastest.out_mm=0;
+    earlist.in_ss=lastest.out_ss=0;
+    lastest.out_hh=0;
+}
+
+bool Earlier(person a,person b)
+{
+    if(a.in_hh!=b.in_hh) return a.in_hh<b.in_hh;
+    if(a.in_mm!=b.in_mm) return a.in_mm<b.in_mm;
+    if(a.in_ss!=b.in_ss) return a.in_ss<b.in_ss;
+}
+
+bool Latter(person a,person b)
+{
+    if(a.out_hh!=b.out_hh) return a.out_hh>b.out_hh;
+    if(a.out_mm!=b.out_mm) return a.out_mm>b.out_mm;
+    if(a.out_ss!=b.out_ss) return a.out_ss>b.out_ss;
+}
+
+int main()
+{
+    init();
+    int m;
+    scanf("%d",&m);
+    for(int i=0;i<m;i++)
+    {
+        scanf("%s %d:%d:%d %d:%d:%d",&temp.id,&temp.in_hh,&temp.in_mm,&temp.in_ss,&temp.out_hh,&temp.out_mm,&temp.out_ss);
+        if(Earlier(temp,earlist))
+            earlist=temp;
+        if(Latter(temp,lastest))
+            lastest=temp;
+    }
+    printf("%s %s",earlist.id,lastest.id);
+}
