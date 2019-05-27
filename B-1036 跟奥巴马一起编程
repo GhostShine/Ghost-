@@ -1,0 +1,35 @@
+#include <iostream>
+#include<cstdio>
+#include<cmath>
+
+int main()
+{
+    int n,m;
+    char c;
+    scanf("%d %c",&n,&c);
+    //m=round((float)n/2);四舍五入取整函数和下面奇偶判断一样
+    if(n%2==1) m=n/2+1;
+    else m=n/2;
+    for(int i=0;i<m;i++)
+    {
+        if(i==0||i==m-1)
+        {
+            for(int j=0;j<n;j++)
+            {
+                printf("%c",c);
+            }
+            printf("\n");
+        }
+        else
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(j==0||j==n-1)
+                    printf("%c",c);
+                else
+                    printf(" ");
+            }
+            printf("\n");
+        }
+    }
+}
