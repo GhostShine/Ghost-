@@ -1,0 +1,55 @@
+#include <iostream>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+struct person
+{
+    char name[15];
+    char gender;
+    char id[15];
+    int grade;
+}male,female,temp;
+
+void init()
+{
+    male.grade=101;
+    male.gender='M';
+    female.grade=-1;
+    female.gender='F';
+}
+
+bool higher(person a,person b)//a比b分数高
+{
+    if(a.grade!=b.grade) return a.grade>b.grade;
+}
+
+int main()
+{
+    init();
+    int n;
+    scanf("%d",&n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%s %c %s %d",&temp.name,&temp.gender,&temp.id,&temp.grade);
+        if(temp.gender=='F'&&temp.grade>female.grade)
+        {
+            female=temp;
+        }
+        else if(temp.gender=='M'&&temp.grade<male.grade)
+        {
+            male=temp;
+        }
+    }
+    if(female.grade!=-1)
+        printf("%s %s\n",female.name,female.id);
+    else
+        printf("Absent\n");
+    if(male.grade!=101)
+        printf("%s %s\n",male.name,male.id);
+    else
+        printf("Absent\n");
+    if(female.grade!=-1&&male.grade!=101)
+        printf("%d",abs(male.grade-female.grade));
+    else
+        printf("NA");
+}
