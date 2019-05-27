@@ -1,0 +1,27 @@
+#include <iostream>
+#include<cstdio>
+#include <math.h>
+
+int main()
+{
+    int id;
+    double temp,ans=1.0,a;
+    char change[3]={'W','T','L'};
+    for(int i=0;i<3;i++)
+    {
+        temp=0.0;
+        for(int j=0;j<3;j++)
+        {
+            scanf("%lf",&a);
+            if(a>temp)
+            {
+                id=j;
+                temp=a;
+            }
+        }
+        ans*=temp;
+        printf("%c ",change[id]);
+    }
+    ans=round((0.65*ans-1)*2*100);
+    printf("%.2f",ans/100);
+}
