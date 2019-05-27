@@ -8,7 +8,7 @@ struct person
     char gender;
     char id[15];
     int grade;
-}male,female,temp;
+}male,female,temp;//用temp储存
 
 void init()
 {
