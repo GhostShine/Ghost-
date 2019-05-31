@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+    char str[100];
+    int n1,n2,n3,count=0;
+    //while(scanf("%c",&u)!=EOF)
+    while((str[count]=getchar())!='\n')
+    //getchar())!='\n'用于判断输入是否结束
+    {
+        count++;
+    }
+    switch((count+2)%3)
+    {
+    case 0:
+        n1=n2=n3=(count+2)/3;
+        break;
+    case 1:
+        {
+            n1=n3=(count+1)/3;
+            n2=n1+1;
+            break;
+        }
+    case 2:
+        {
+            n1=n3=count/3;
+            n2=n1+2;
+            break;
+        }
+    default:
+        break;
+    }
+    for(int i=0;i<n1-1;i++)
+    {
+        printf("%c",str[i]);
+        for(int j=0;j<n2-2;j++)
+            printf(" ");
+        printf("%c\n",str[count-1-i]);
+    }
+    for(int i=n1-1;i<count-n1+1;i++)
+        printf("%c",str[i]);
+}
