@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+int main()
+{
+    int G1,S1,K1;
+    int G2,S2,K2;
+    int d1=0,d2=0,d3=0;
+    scanf("%d.%d.%d %d.%d.%d",&G1,&S1,&K1,&G2,&S2,&K2);
+    if(K2-K1<0)
+    {
+        d2--;
+        d1=K2-K1+29;
+    }
+    else
+    {
+        d1=K2-K1;
+    }
+    if(S2-S1+d2<0)
+    {
+        d3--;
+        d2=d2+17+S2-S1;
+    }
+    else
+    {
+        d2=d2+S2-S1;
+    }
+    if(d3+G2-G1<0)
+    {
+        d3=d3+G2-G1+1;
+        d2=16-d2;
+        d1=29-d1;
+    }
+    else
+    {
+        d3=d3+G2-G1;
+    }
+    printf("%d.%d.%d",d3,d2,d1);
+}
